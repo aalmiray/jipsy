@@ -32,15 +32,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 */
-
 package org.kordamp.jipsy.processor;
 
-public interface Initializer {
-    /**
-     * Read the content of the resource named and return the character stream content of the file.
-     *
-     * @param name the name of the file.
-     * @return the content of the file
-     */
-    CharSequence initialData(String name);
+import java.util.Collection;
+
+public interface ProvidedCollector {
+    Collection<? extends Provided> values();
+    boolean isModified();
+    void cache();
+    Provided get(String name);
+    void removeProvider(String name);
 }
